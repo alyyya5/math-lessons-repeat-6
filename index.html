@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Занятие 1. Положительные и отрицательные числа. Модуль. Сравнение | Математика 6 класс</title>
+    <title>Математика 6 класс | Все занятия</title>
     <style>
         * {
             margin: 0;
@@ -16,47 +16,71 @@
             padding: 30px 20px;
             color: #1e2f3e;
         }
-        .lesson-container {
-            max-width: 1100px;
+        .main-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 40px;
+            border-radius: 48px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            padding: 30px 35px;
+            padding: 25px 30px 35px;
         }
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            color: #0f2b3d;
-            border-left: 8px solid #3b82f6;
-            padding-left: 20px;
+        /* вкладки */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
         }
-        .subtitle {
+        .tab-btn {
+            background: #eef2ff;
+            border: none;
             font-size: 1rem;
-            color: #4a627a;
-            margin-bottom: 30px;
-            padding-left: 28px;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            color: #1e4663;
+            transition: 0.2s;
         }
+        .tab-btn.active {
+            background: #1e4663;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #d9e6f5;
+        }
+        /* контент занятий */
+        .lesson {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .lesson.active {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(5px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        /* стили внутри занятия – как у вас */
         .theory-block {
             background: #f8fafc;
             border-radius: 28px;
             padding: 18px 25px;
             margin-bottom: 35px;
             border-left: 6px solid #3b82f6;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
         }
         .theory-block h2 {
             font-size: 1.6rem;
             margin-bottom: 16px;
             color: #1e4a76;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         .theory-block h3 {
             font-size: 1.2rem;
-            margin: 20px 0 10px 0;
+            margin: 20px 0 10px;
             color: #2563eb;
         }
         .important {
@@ -81,13 +105,6 @@
             border-radius: 20px;
             padding: 12px 18px;
             margin: 12px 0;
-            font-family: monospace;
-            font-size: 1rem;
-        }
-        .task-section {
-            background: #ffffff;
-            border-radius: 28px;
-            margin-top: 25px;
         }
         .task-card {
             background: #ffffff;
@@ -95,7 +112,6 @@
             border-radius: 28px;
             padding: 18px 24px;
             margin-bottom: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         .task-title {
             font-size: 1.3rem;
@@ -108,7 +124,7 @@
             border-bottom: 2px solid #e2e8f0;
             padding-bottom: 8px;
         }
-        .task-title .badge {
+        .badge {
             background: #3b82f6;
             color: white;
             padding: 4px 14px;
@@ -186,225 +202,421 @@
             margin-top: 30px;
         }
         @media (max-width: 700px) {
-            .lesson-container { padding: 20px; }
+            .main-wrapper { padding: 18px; }
             .question { margin-left: 5px; }
             input { width: 120px; }
         }
     </style>
 </head>
 <body>
-<div class="lesson-container">
-    <h1>🧮 Занятие 1</h1>
-    <div class="subtitle">Положительные и отрицательные числа · Модуль · Сравнение</div>
-
-    <!-- ТЕОРИЯ -->
-    <div class="theory-block">
-        <h2>📖 Теория</h2>
-
-        <h3>1. Координатная прямая</h3>
-        <p>Прямая, на которой выбраны:</p>
-        <ul style="margin-left: 30px; margin-bottom: 10px;">
-            <li><strong>начало отсчёта</strong> (точка O, число 0),</li>
-            <li><strong>положительное направление</strong> (обычно вправо или вверх),</li>
-            <li><strong>единичный отрезок</strong>,</li>
-        </ul>
-        <p>называется <strong>координатной прямой</strong>.<br>
-        Числа справа от нуля – <strong>положительные</strong> (со знаком + или без знака).<br>
-        Числа слева от нуля – <strong>отрицательные</strong> (со знаком –).</p>
-        <br>
-        <div class="important">
-            🔹 Пример: +5, 7, 0.3 – положительные; –2, –0.7, –3/4 – отрицательные.
-        </div>
-
-        <h3>2. Противоположные числа</h3>
-        <p>Числа, отличающиеся только знаком, называются <strong>противоположными</strong>.<br>
-        Например: <strong>7 и –7</strong>. Ноль противоположен сам себе.<br>
-        На координатной прямой они расположены <strong>симметрично</strong> относительно нуля.</p>
-
-        <div class="rule">📌 Если число <em>a</em>, то противоположное ему <em>–a</em>.</div>
-
-        <h3>3. Модуль числа</h3>
-        <p><strong>Модуль</strong> числа <em>n</em> – это расстояние от начала отсчёта до точки <em>N(n)</em>.<br>
-        Обозначение: <strong>|n|</strong>. Модуль всегда <strong>неотрицателен</strong>.</p>
-        <div class="rule">
-            |n| = n, если n ≥ 0 &nbsp;&nbsp;<br>
-            &nbsp;&nbsp; |n| = –n, если n < 0
-        </div>
-        <div class="example">
-            📐 |–7| = 7, &nbsp; |3,5| = 3,5, &nbsp; |0| = 0.
-        </div>
-        <p><strong>Свойство:</strong> модули противоположных чисел равны: |–a| = |a|.</p>
-
-        <h3>4. Сравнение чисел</h3>
-        <ul>
-            <li>Любое положительное число <strong>больше</strong> любого отрицательного.</li>
-            <li>Ноль больше отрицательного, но меньше положительного.</li>
-            <li>Из двух отрицательных чисел <strong>больше</strong> то, у которого <strong>модуль меньше</strong>.</li>
-            <li>На координатной прямой большее число находится <strong>правее</strong>.</li>
-        </ul>
-        <div class="important">
-            ✅ Пример: –5 < –3 (так как |–5|=5, |–3|=3, 5>3 → –5 < –3).<br>
-            ✅ 7 > –10, &nbsp; 0 > –2,5, &nbsp; –1,2 < –0,8.
-            </div >
+<div class="main-wrapper">
+    <div class="tabs">
+        <button class="tab-btn active" data-lesson="1">📘 Занятие 1. Модуль, сравнение</button>
+        <button class="tab-btn" data-lesson="2">📗 Занятие 2. Сложение и вычитание</button>
+        <button class="tab-btn" data-lesson="3">📙 Занятие 3. Умножение и деление</button>
+        <button class="tab-btn" data-lesson="4">📕 Занятие 4. Рациональные числа, скобки</button>
+        <button class="tab-btn" data-lesson="5">📔 Занятие 5. Подобные слагаемые, уравнения</button>
+        <button class="tab-btn" data-lesson="6">📒 Занятие 6. Координатная плоскость</button>
+        <button class="tab-btn" data-lesson="7">📓 Занятие 7. Пропорции, проценты</button>
     </div>
 
-    <!-- УСТНЫЕ УПРАЖНЕНИЯ (сами вопросы, ученик отвечает устно или в тетради) -->
-    <div class="task-card">
-        <div class="task-title"><span class="badge">🗣️ Устно</span> Разминка</div>
-        <div class="question">1. Назовите числа, противоположные: –5, 2.3, –0.5, 0, 7.</div>
-        <div class="question">2. Чему равен модуль: |–12|, |8|, |–0.7|, |0|?</div>
-        <div class="question">3. Сравните, не вычисляя: –3 и 2, 0 и –1, –7 и –5.</div>
-        <div class="question">4. Верно ли: |–9| = 9, |5| = –5, |–a| = a для любого a?</div>
+    <!-- ======================= ЗАНЯТИЕ 1 ======================= -->
+    <div id="lesson1" class="lesson active">
+        <h1>🧮 Занятие 1</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Положительные и отрицательные числа · Модуль · Сравнение</div>
+        <!-- ТЕОРИЯ (ваша уже готова) -->
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <h3>1. Координатная прямая</h3>
+            <p>Прямая, на которой выбраны начало отсчёта (0), положительное направление и единичный отрезок – <strong>координатная прямая</strong>.<br>Числа справа от нуля – <strong>положительные</strong>, слева – <strong>отрицательные</strong>.</p>
+            <div class="important">🔹 Пример: +5, 7, 0.3 – положительные; –2, –0.7, –3/4 – отрицательные.</div>
+            <h3>2. Противоположные числа</h3>
+            <p>Числа, отличающиеся только знаком: <strong>7 и –7</strong>. Ноль противоположен сам себе.</p>
+            <h3>3. Модуль числа</h3>
+            <p><strong>Модуль</strong> – расстояние от начала отсчёта до точки. Обозначение |n|. Всегда неотрицателен.</p>
+            <div class="rule">|n| = n, если n ≥ 0; |n| = –n, если n < 0</div>
+            <div class="example">📐 |–7| = 7, |3,5| = 3.5, |0| = 0</div>
+            <h3>4. Сравнение чисел</h3>
+            <ul><li>Положительное > любого отрицательного</li><li>Ноль > отрицательного, < положительного</li><li>Из двух отрицательных больше то, у которого модуль меньше</li></ul>
+            <div class="important">✅ –5 < –3 (|–5|=5 > |–3|=3 → –5 < –3)</div>
+        </div>
+
+        <div class="task-card"><div class="task-title"><span class="badge">🗣️ Устно</span> Разминка</div>
+            <div class="question">1. Назовите числа, противоположные: –5, 2.3, –0.5, 0, 7.</div>
+            <div class="question">2. Чему равен модуль: |–12|, |8|, |–0.7|, |0|?</div>
+            <div class="question">3. Сравните: –3 и 2, 0 и –1, –7 и –5.</div>
+            <div class="question">4. Верно ли: |–9| = 9, |5| = –5, |–a| = a для любого a?</div>
+        </div>
+
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 1</span> Координаты точек</div>
+            <div class="question">A(3) → x = <input type="text" id="l1_z1"></div>
+            <div class="question">B(–2) → x = <input type="text" id="l1_z2"></div>
+            <div class="question">C(–4.5) → x = <input type="text" id="l1_z3"></div>
+            <div class="question">D(0) → x = <input type="text" id="l1_z4"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 2</span> Модуль числа</div>
+            <div class="question">|–34| = <input type="text" id="l1_m1"></div>
+            <div class="question">|12.7| = <input type="text" id="l1_m2"></div>
+            <div class="question">|–0.08| = <input type="text" id="l1_m3"></div>
+            <div class="question">|–3/8| = <input type="text" id="l1_m4" placeholder="3/8"></div>
+            <div class="question">|–105| = <input type="text" id="l1_m5"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 3</span> Сравнение</div>
+            <div class="question">–15 ___ –12 <input type="text" id="l1_s1" style="width:70px"></div>
+            <div class="question">–3.8 ___ 0 <input type="text" id="l1_s2" style="width:70px"></div>
+            <div class="question">7 ___ –9 <input type="text" id="l1_s3" style="width:70px"></div>
+            <div class="question">–2.5 ___ –2.05 <input type="text" id="l1_s4" style="width:70px"></div>
+            <div class="question">0 ___ –0.01 <input type="text" id="l1_s5" style="width:70px"></div>
+            <div class="question">–2/3 ___ –3/4 <input type="text" id="l1_s6" style="width:70px"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 4</span> Вычисления с модулями</div>
+            <div class="question">|–7| + |3| = <input type="text" id="l1_c1"></div>
+            <div class="question">|–5| – |–2| = <input type="text" id="l1_c2"></div>
+            <div class="question">|–1.5| + |–2.8| = <input type="text" id="l1_c3"></div>
+            <div class="question">|9| – |–4.3| = <input type="text" id="l1_c4"></div>
+            <div class="question">|–0.7| – |0.7| = <input type="text" id="l1_c5"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 5</span> Уравнения |x| = a</div>
+            <div class="question">|x| = 5 → x = <input type="text" id="l1_x1" placeholder="5; -5"></div>
+            <div class="question">|x| = 0 → x = <input type="text" id="l1_x2"></div>
+            <div class="question">|x| = 1.4 → x = <input type="text" id="l1_x3" placeholder="1.4; -1.4"></div>
+            <div class="question">|x| = –3 → x = <input type="text" id="l1_x4" style="width:250px"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Задание 6</span> Порядок возрастания</div>
+            <div class="question">–4, 0, –7, 2.5, –1, 3, –0.5 → <input type="text" id="l1_order1" style="width:300px"></div>
+            <div class="question">–3.2, –3.5, 0, 2.1, –1.8, –3.15 → <input type="text" id="l1_order2" style="width:300px"></div>
+            <div class="question">–5/6, –0.8, –2/3, 0, –1 → <input type="text" id="l1_order3" style="width:300px"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p><strong>1.</strong> Начертите координатную прямую, отметьте точки: A(–4), B(2.5), C(–1.5), D(0), E(6). Найдите расстояние от начала отсчёта до каждой точки.</p>
+            <p><strong>2.</strong> Запишите все целые числа, модуль которых меньше 5.</p>
+            <p><strong>3.</strong> Сравните: а) –17 и –19 &nbsp;&nbsp; б) –0.3 и –0.27 &nbsp;&nbsp; в) –7/8 и –5/6.</p>
+            <p><strong>4.</strong> Вычислите: а) |–28|+|–14|; б) |–6.8|–|4.2|; в) |–0.5|·|–8|; г) |120|:|–40|.</p>
+            <p><strong>5.*</strong> Придумайте три числа, каждое из которых больше –5, но меньше –2.</p>
+        </div>
     </div>
 
-    <!-- ПИСЬМЕННЫЕ ЗАДАНИЯ (с полями ввода) -->
-    <div class="task-section">
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 1</span> Координаты точек</div>
-            <div class="question">Запишите координаты точек A(3), B(–2), C(–4.5), D(0).<br> (в поля введите просто число, например 3)</div>
-            <div class="question">A(3) → x = <input type="text" id="z1" placeholder=""></div>
-            <div class="question">B(–2) → x = <input type="text" id="z2" placeholder=""></div>
-            <div class="question">C(–4.5) → x = <input type="text" id="z3" placeholder=""></div>
-            <div class="question">D(0) → x = <input type="text" id="z4" placeholder=""></div>
+    <!-- ======================= ЗАНЯТИЕ 2 ======================= -->
+    <div id="lesson2" class="lesson">
+        <h1>➕ Занятие 2</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Сложение и вычитание положительных и отрицательных чисел</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <h3>Сложение чисел с помощью координатной прямой</h3>
+            <p>Прибавить положительное число – перемещение вправо, отрицательное – влево.</p>
+            <h3>Правила сложения</h3>
+            <div class="rule">• Сумма двух отрицательных: сложить модули, поставить «–».</div>
+            <div class="example">–3 + (–5) = –(3+5) = –8</div>
+            <div class="rule">• Сумма чисел с разными знаками: из большего модуля вычесть меньший, поставить знак числа с большим модулем.</div>
+            <div class="example">–7 + 4 = –3, 8 + (–5) = 3</div>
+            <h3>Вычитание</h3>
+            <div class="rule">a – b = a + (–b)</div>
+            <div class="example">–5 – (–3) = –5 + 3 = –2</div>
+            <h3>Алгебраическая сумма</h3>
+            <p>Выражение, содержащее только сложение и вычитание. Удобно группировать положительные и отрицательные слагаемые.</p>
         </div>
-
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 2</span> Модуль числа</div>
-            <div class="question">1. |–34| = <input type="text" id="m1" placeholder="число"></div>
-            <div class="question">2. |12.7| = <input type="text" id="m2" placeholder="число"></div>
-            <div class="question">3. |–0.08| = <input type="text" id="m3" placeholder="число"></div>
-            <div class="question">4. |–3/8| = <input type="text" id="m4" placeholder="числитель/знаменатель"></div>
-            <div class="question">5. |–105| = <input type="text" id="m5" placeholder="число"></div>
+        <div class="task-card"><div class="task-title"><span class="badge">🗣️ Устно</span></div>
+            <div class="question">1. (–4)+(–6), 7+(–2), (–3)+5, 0+(–8).</div>
+            <div class="question">2. Найдите сумму противоположных чисел: (–15)+15, 3.7+(–3.7).</div>
+            <div class="question">3. Замените вычитание сложением: 8–(–3), –7–4, –2–(–5).</div>
         </div>
-
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 3</span> Сравнение (>, <, =)</div>
-            <div class="question">а) –15 ___ –12 → <input type="text" id="s1" style="width:70px" placeholder="знак"></div>
-            <div class="question">б) –3.8 ___ 0 → <input type="text" id="s2" style="width:70px" placeholder="знак"></div>
-            <div class="question">в) 7 ___ –9 → <input type="text" id="s3" style="width:70px" placeholder="знак"></div>
-            <div class="question">г) –2.5 ___ –2.05 → <input type="text" id="s4" style="width:70px" placeholder="знак"></div>
-            <div class="question">д) 0 ___ –0.01 → <input type="text" id="s5" style="width:70px" placeholder="знак"></div>
-            <div class="question">е) –2/3 ___ –3/4 → <input type="text" id="s6" style="width:70px" placeholder="знак"></div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Сложение</span></div>
+            <div class="question">(–15)+(–7) = <input type="text" id="l2_q1"></div>
+            <div class="question">(–2.4)+(–3.6) = <input type="text" id="l2_q2"></div>
+            <div class="question">23+(–16) = <input type="text" id="l2_q3"></div>
+            <div class="question">–38+24 = <input type="text" id="l2_q4"></div>
+            <div class="question">–4.2+7 = <input type="text" id="l2_q5"></div>
+            <div class="question">9.5+(–12.3) = <input type="text" id="l2_q6"></div>
         </div>
-
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 4</span> Вычисление модулей</div>
-            <div class="question">а) |–7| + |3| = <input type="text" id="c1" placeholder="число"></div>
-            <div class="question">б) |–5| – |–2| = <input type="text" id="c2" placeholder="число"></div>
-            <div class="question">в) |–1.5| + |–2.8| = <input type="text" id="c3" placeholder="число"></div>
-            <div class="question">г) |9| – |–4.3| = <input type="text" id="c4" placeholder="число"></div>
-            <div class="question">д) |–0.7| – |0.7| = <input type="text" id="c5" placeholder="число"></div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Вычитание</span></div>
+            <div class="question">8–(–3) = <input type="text" id="l2_q7"></div>
+            <div class="question">–12–9 = <input type="text" id="l2_q8"></div>
+            <div class="question">–5–(–7) = <input type="text" id="l2_q9"></div>
+            <div class="question">4.2–(–1.8) = <input type="text" id="l2_q10"></div>
+            <div class="question">–2.5–3.5 = <input type="text" id="l2_q11"></div>
+            <div class="question">–7/9 – (–2/9) = <input type="text" id="l2_q12" placeholder="-5/9"></div>
         </div>
-
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 5</span> Найти x из уравнения |x| = a, если ответов несколько, запишите в формате: число1; число2</div>
-            <div class="question">а) |x| = 5 → x = <input type="text" id="x1" placeholder=""></div>
-            <div class="question">б) |x| = 0 → x = <input type="text" id="x2" placeholder=""></div>
-            <div class="question">в) |x| = 1.4 → x = <input type="text" id="x3" placeholder=""></div>
-            <div class="question">г) |x| = –3 → x = <input type="text" id="x4" placeholder="" style="width:250px"></div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Алгебраическая сумма</span></div>
+            <div class="question">–34+28+(–16)+14 = <input type="text" id="l2_q13"></div>
+            <div class="question">4.5+(–5.7)+(–4.5)+6.8 = <input type="text" id="l2_q14"></div>
+            <div class="question">–17+23+(–12)+(–11)+19 = <input type="text" id="l2_q15"></div>
+            <div class="question">3/7 + (–2/5) + (–4/7) + 3/5 = <input type="text" id="l2_q16" placeholder="0"></div>
         </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Уравнения и длина отрезка</span></div>
+            <div class="question">x+(–7)=12 → x = <input type="text" id="l2_q17"></div>
+            <div class="question">y–3.6=–2.4 → y = <input type="text" id="l2_q18"></div>
+            <div class="question">–5+a=–9 → a = <input type="text" id="l2_q19"></div>
+            <div class="question">8–t=–2 → t = <input type="text" id="l2_q20"></div>
+            <div class="question">Длина отрезка M(–5) и N(3) = <input type="text" id="l2_q21"></div>
+            <div class="question">Длина A(–2.5) и B(4.5) = <input type="text" id="l2_q22"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>1. Вычислите: а) –38+(–42); б) 129+(–256); в) –0.38+0.19; г) –4.7+6.8; д) –7.8–(–5.4); е) 0–(–12.5).</p>
+            <p>2. Найдите значение: –27+18–43+31–12.</p>
+            <p>3. Решите уравнения: x–(–5)=3; –7+y=–2; 3.4–a=–6.8.</p>
+            <p>4. Расстояние между P(–8) и Q(3).</p>
+            <p>5.* Придумайте три числа, сумма =0, сумма модулей =10.</p>
+        </div>
+    </div>
 
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📝 Задание 6</span> Порядок возрастания</div>
-            <div class="question">а) –4, 0, –7, 2.5, –1, 3, –0.5 → запишите в порядке возрастания через пробел: <input type="text" id="order1" style="width:300px" placeholder="числа"></div>
-            <div class="question">б) –3.2, –3.5, 0, 2.1, –1.8, –3.15 → <input type="text" id="order2" style="width:300px" placeholder="числа"></div>
-            <div class="question">в) –5/6, –0.8, –2/3, 0, –1 → <input type="text" id="order3" style="width:300px" placeholder="числа"></div>
+    <!-- ======================= ЗАНЯТИЕ 3 ======================= -->
+    <div id="lesson3" class="lesson">
+        <h1>✖️ Занятие 3</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Умножение и деление рациональных чисел</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <div class="rule">Правило знаков: «+»·«+»=«+», «+»·«–»=«–», «–»·«–»=«+». То же для деления.</div>
+            <div class="example">–3·4 = –12,   (–5)·(–2)=10,   16:(–4)=–4,   (–12):(–3)=4</div>
+            <div class="important">Деление на нуль невозможно!</div>
+            <div class="rule">Степень: (–2)² = 4, (–3)³ = –27 (нечётная степень сохраняет знак «–»).</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">🗣️ Устно</span></div>
+            <div class="question">(–3)·4, (–5)·(–2), 0·(–8), 16:(–4), (–12):(–3).</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Умножение и деление</span></div>
+            <div class="question">(–7)·9 = <input type="text" id="l3_q1"></div>
+            <div class="question">5·(–12) = <input type="text" id="l3_q2"></div>
+            <div class="question">(–0.5)·(–0.2) = <input type="text" id="l3_q3"></div>
+            <div class="question">(–3.5)·(–2) = <input type="text" id="l3_q4"></div>
+            <div class="question">48:(–6) = <input type="text" id="l3_q5"></div>
+            <div class="question">(–120):(–15) = <input type="text" id="l3_q6"></div>
+            <div class="question">(–8.4):4 = <input type="text" id="l3_q7"></div>
+            <div class="question">(–4.8):(–1.6) = <input type="text" id="l3_q8"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Степень</span></div>
+            <div class="question">(–2)² = <input type="text" id="l3_q9"></div>
+            <div class="question">(–3)³ = <input type="text" id="l3_q10"></div>
+            <div class="question">(–0.5)² = <input type="text" id="l3_q11"></div>
+            <div class="question">(–1)¹⁰ = <input type="text" id="l3_q12"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Смешанные примеры</span></div>
+            <div class="question">(–4)·(–5) + (–2)·6 – 3·(–7) = <input type="text" id="l3_q13"></div>
+            <div class="question">Решите уравнение: –5x = 45 → x = <input type="text" id="l3_q14"></div>
+            <div class="question">2.4y = –9.6 → y = <input type="text" id="l3_q15"></div>
+            <div class="question">–3z = –15 → z = <input type="text" id="l3_q16"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>Вычислить: (–8)·7, (–4)·(–25), 0.6·(–3), (–1.2)·(–0.5), 72:(–8), (–144):12, (–5.4):(–0.6), (–3)⁴, (–4)³, (–1)⁷.</p>
+            <p>Решить уравнение: –7a = 56, найти (–4)³.</p>
+        </div>
+    </div>
+
+    <!-- ======================= ЗАНЯТИЕ 4 ======================= -->
+    <div id="lesson4" class="lesson">
+        <h1>📦 Занятие 4</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Рациональные числа. Раскрытие скобок. Уравнения</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <p><strong>Рациональное число</strong> – число вида p/q, где p – целое, q – натуральное. Любое целое, дробное, десятичное – рациональное.</p>
+            <div class="rule">Раскрытие скобок:<br>a + (b – c) = a + b – c<br>a – (b – c) = a – b + c</div>
+            <div class="example">5 + (3 – 2) = 5+3-2=6; 8 – (4+1) = 8-4-1=3</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Представьте в виде p/q</span></div>
+            <div class="question">0.8 = <input type="text" id="l4_q1" placeholder="4/5"></div>
+            <div class="question">–3 = <input type="text" id="l4_q2" placeholder="-3/1"></div>
+            <div class="question">1.25 = <input type="text" id="l4_q3" placeholder="5/4"></div>
+            <div class="question">–5/6 (уже дробь) = <input type="text" id="l4_q4" placeholder="-5/6"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Раскрыть скобки и вычислить</span></div>
+            <div class="question">4 + (7 – 12) = <input type="text" id="l4_q5"></div>
+            <div class="question">–9 – (3 – 8) = <input type="text" id="l4_q6"></div>
+            <div class="question">–(–5 + 2) – 7 = <input type="text" id="l4_q7"></div>
+            <div class="question">3x – (5x – 2) + 4 (упростить) = <input type="text" id="l4_q8" placeholder="-2x+6"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Уравнения</span></div>
+            <div class="question">5x = –20 → x = <input type="text" id="l4_q9"></div>
+            <div class="question">x – 4 = –7 → x = <input type="text" id="l4_q10"></div>
+            <div class="question">3y + 5 = 2y – 1 → y = <input type="text" id="l4_q11"></div>
+            <div class="question">2(x – 3) = 8 → x = <input type="text" id="l4_q12"></div>
+            <div class="question">–4(3 – x) = 12 → x = <input type="text" id="l4_q13"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>Раскрыть скобки и упростить: –(a – 2b) + (3a + b). Решить: 4(x – 2) = –8, 3y – 7 = 2y + 5.</p>
+        </div>
+    </div>
+
+    <!-- ======================= ЗАНЯТИЕ 5 ======================= -->
+    <div id="lesson5" class="lesson">
+        <h1>🔢 Занятие 5</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Подобные слагаемые. Коэффициент. Линейные уравнения</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <p><strong>Подобные слагаемые</strong> – имеют одинаковую буквенную часть. Чтобы привести подобные, сложить коэффициенты и умножить на общую буквенную часть.</p>
+            <div class="rule">Коэффициент – числовой множитель перед буквой. Если нет числа, коэффициент = 1 или –1.</div>
+            <div class="example">7a, –3b, c, –xy, 0.5k.</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Привести подобные</span></div>
+            <div class="question">5a + 2a – 3a = <input type="text" id="l5_q1" placeholder="4a"></div>
+            <div class="question">8m – 3m + m = <input type="text" id="l5_q2" placeholder="6m"></div>
+            <div class="question">–2n + 4n – n = <input type="text" id="l5_q3" placeholder="n"></div>
+            <div class="question">3x + 5 – 2x + 7 = <input type="text" id="l5_q4" placeholder="x+12"></div>
+            <div class="question">4y – (y + 2) + 3 = <input type="text" id="l5_q5" placeholder="3y+1"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Уравнения с приведением подобных</span></div>
+            <div class="question">5x – 3x + 2 = 10 → x = <input type="text" id="l5_q6"></div>
+            <div class="question">2y + 5y – 7 = 0 → y = <input type="text" id="l5_q7"></div>
+            <div class="question">4a – 3 = 2a + 5 → a = <input type="text" id="l5_q8"></div>
+            <div class="question">3(x – 2) – 2(x + 1) = 4 → x = <input type="text" id="l5_q9"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>Упростить: 7c + 9 – 5c – 4, 2(3 – x) + 4x. Решить: 5x – 2x = 12, 4(x – 1) = 2x + 6.</p>
+        </div>
+    </div>
+
+    <!-- ======================= ЗАНЯТИЕ 6 ======================= -->
+    <div id="lesson6" class="lesson">
+        <h1>📈 Занятие 6</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Координатная плоскость. Графики</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <p>Две перпендикулярные оси: Ox (абсцисс) и Oy (ординат), начало O(0;0). Каждой точке соответствует пара чисел (x; y).</p>
+            <div class="rule">Построение точки по координатам: первое число – по горизонтали, второе – по вертикали.</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Построение (описать в тетради)</span></div>
+            <div class="question">Назовите координаты точек: A(3;5), B(–2;4), C(–1;–3), D(0;–4), E(6;0).</div>
+            <div class="question">Определите четверть: (–3;5) → <input type="text" id="l6_q1" placeholder="II"></div>
+            <div class="question">Найдите длину отрезка: K(2;0) и L(8;0) → <input type="text" id="l6_q2"></div>
+            <div class="question">M(–3;4) и N(–3;–1) → <input type="text" id="l6_q3"></div>
+            <div class="question">Постройте прямоугольник P(–2;1), Q(3;1), R(3;–2), S(–2;–2). Периметр = <input type="text" id="l6_q4"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>Построить треугольник A(–1;2), B(4;0), C(1;–3). Найти длину средней линии. Построить точку, симметричную A относительно начала координат.</p>
+        </div>
+    </div>
+
+    <!-- ======================= ЗАНЯТИЕ 7 ======================= -->
+    <div id="lesson7" class="lesson">
+        <h1>📐 Занятие 7</h1>
+        <div class="subtitle" style="font-size:1rem; margin-bottom:20px;">Пропорции и проценты</div>
+        <div class="theory-block">
+            <h2>📖 Теория</h2>
+            <div class="rule">Пропорция a:b = c:d → основное свойство ad = bc.</div>
+            <div class="rule">1% = 0.01. Чтобы найти p% от числа, умножить число на p/100. Чтобы найти число по его проценту, разделить значение на p и умножить на 100.</div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Проверьте пропорцию</span></div>
+            <div class="question">12:4 = 18:6 → верно? (да/нет) <input type="text" id="l7_q1" style="width:70px"></div>
+            <div class="question">5:7 = 10:15 → <input type="text" id="l7_q2" style="width:70px"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Найдите неизвестный член</span></div>
+            <div class="question">x:8 = 3:4 → x = <input type="text" id="l7_q3"></div>
+            <div class="question">15:y = 5:7 → y = <input type="text" id="l7_q4"></div>
+            <div class="question">2.4/1.2 = 6/z → z = <input type="text" id="l7_q5"></div>
+        </div>
+        <div class="task-card"><div class="task-title"><span class="badge">📝 Проценты</span></div>
+            <div class="question">20% от 250 = <input type="text" id="l7_q6"></div>
+            <div class="question">35% от 80 = <input type="text" id="l7_q7"></div>
+            <div class="question">Найти число, если 15% его = 45 → <input type="text" id="l7_q8"></div>
+            <div class="question">8% = 3.2 → число = <input type="text" id="l7_q9"></div>
+        </div>
+        <div class="homework"><h3>🏠 Домашнее задание</h3>
+            <p>Решить пропорции: 7:21=4:y, 2.5/x = 0.5/0.2. Задача: Из 12 кг свёклы – 2 кг сахара. Сколько сахара из 90 кг? Вклад 10000 руб под 8% годовых – сумма через год.</p>
         </div>
     </div>
 
     <div class="button-group">
-        <button id="checkBtn">✅ Проверить задания</button>
+        <button id="checkBtn">✅ Проверить текущее занятие</button>
         <button id="copyBtn">📋 Скопировать отчёт (только ошибки)</button>
-        <button id="resetBtn" class="reset-btn">🔄 Очистить поля</button>
+        <button id="resetBtn" class="reset-btn">🔄 Очистить поля в этом занятии</button>
     </div>
-
-    <div id="resultArea" class="result-area">
-        📌 После выполнения нажмите «Проверить».<br>
-        Отчёт покажет только ошибки и правильные ответы.
-    </div>
-
-    <div class="homework">
-        <h3>🏠 Домашнее задание</h3>
-        <p><strong>1.</strong> Начертите координатную прямую, отметьте точки: A(–4), B(2.5), C(–1.5), D(0), E(6). Найдите расстояние от начала отсчёта до каждой точки.</p><br>
-        <p></p>
-        <p><strong>2.</strong> Запишите все целые числа, модуль которых меньше 5.</p><br>
-        <p></p>
-        <p><strong>3.</strong> Сравните:<br></p><br>
-        <p>а) –17 и –19 &nbsp;&nbsp;</p>
-        <p>б) –0.3 и –0.27 &nbsp;&nbsp;</p>
-        <p>в) –7/8 и –5/6.</p>
-        <p><strong>4.</strong> Вычислите:</p><br>
-        <p> а) |–28| + |–14|;</p>
-        <p> б) |–6.8| – |4.2|;</p>
-        <p>в) |–0.5|·|–8|;</p> 
-        <p>г) |120| : |–40|.</p>
-        <p></p>
-        <p><strong>5.*</strong> Придумайте три числа, каждое из которых больше –5, но меньше –2.</p><br>
-    </div>
-    <footer>✏️ Вводите ответы прямо в поля. Дроби записывайте через / (например 1/2). Для двух ответов в задании 5а используйте формат: 5; -5</footer>
+    <div id="resultArea" class="result-area">📌 Выберите занятие, выполните задания и нажмите «Проверить».</div>
+    <footer>✏️ Дроби записывайте через / (например 1/2). Для двух ответов используйте формат: 5; -5</footer>
 </div>
 
 <script>
-    // Правильные ответы (для проверки)
-    const answers = {
-        // Задание 1 (координаты точек) – просто для единообразия, но они очевидны
-        z1: "3", z2: "-2", z3: "-4.5", z4: "0",
-        m1: "34", m2: "12.7", m3: "0.08", m4: "3/8", m5: "105",
-        s1: "<", s2: "<", s3: ">", s4: "<", s5: ">", s6: ">",
-        c1: "10", c2: "3", c3: "4.3", c4: "4.7", c5: "0",
-        x1: "5; -5",   // допускается 5;-5 или 5, -5
-        x2: "0",
-        x3: "1.4; -1.4",
-        x4: "модуль не может быть отрицательным",
-        order1: "-7 -4 -1 -0.5 0 2.5 3",
-        order2: "-3.5 -3.2 -3.15 -1.8 0 2.1",
-        order3: "-1 -0.8 -5/6 -2/3 0"
+    // --------------------------------------------------------------
+    // ПРАВИЛЬНЫЕ ОТВЕТЫ ДЛЯ ВСЕХ ЗАНЯТИЙ (объект lessonsAnswers)
+    // --------------------------------------------------------------
+    const lessonsAnswers = {
+        // Занятие 1 (соответствует id полей l1_...)
+        lesson1: {
+            l1_z1: "3", l1_z2: "-2", l1_z3: "-4.5", l1_z4: "0",
+            l1_m1: "34", l1_m2: "12.7", l1_m3: "0.08", l1_m4: "3/8", l1_m5: "105",
+            l1_s1: "<", l1_s2: "<", l1_s3: ">", l1_s4: "<", l1_s5: ">", l1_s6: ">",
+            l1_c1: "10", l1_c2: "3", l1_c3: "4.3", l1_c4: "4.7", l1_c5: "0",
+            l1_x1: "5; -5", l1_x2: "0", l1_x3: "1.4; -1.4", l1_x4: "модуль не может быть отрицательным",
+            l1_order1: "-7 -4 -1 -0.5 0 2.5 3", l1_order2: "-3.5 -3.2 -3.15 -1.8 0 2.1", l1_order3: "-1 -0.8 -5/6 -2/3 0"
+        },
+        // Занятие 2
+        lesson2: {
+            l2_q1: "-22", l2_q2: "-6", l2_q3: "7", l2_q4: "-14", l2_q5: "2.8", l2_q6: "-2.8",
+            l2_q7: "11", l2_q8: "-21", l2_q9: "2", l2_q10: "6", l2_q11: "-6", l2_q12: "-5/9",
+            l2_q13: "-8", l2_q14: "1.1", l2_q15: "2", l2_q16: "0",
+            l2_q17: "19", l2_q18: "1.2", l2_q19: "-4", l2_q20: "10", l2_q21: "8", l2_q22: "7"
+        },
+        // Занятие 3
+        lesson3: {
+            l3_q1: "-63", l3_q2: "-60", l3_q3: "0.1", l3_q4: "7", l3_q5: "-8", l3_q6: "8",
+            l3_q7: "-2.1", l3_q8: "3", l3_q9: "4", l3_q10: "-27", l3_q11: "0.25", l3_q12: "1",
+            l3_q13: "20", l3_q14: "-9", l3_q15: "-4", l3_q16: "5"
+        },
+        // Занятие 4
+        lesson4: {
+            l4_q1: "4/5", l4_q2: "-3/1", l4_q3: "5/4", l4_q4: "-5/6",
+            l4_q5: "-1", l4_q6: "-4", l4_q7: "-4", l4_q8: "-2x+6",
+            l4_q9: "-4", l4_q10: "-3", l4_q11: "-6", l4_q12: "7", l4_q13: "6"
+        },
+        // Занятие 5
+        lesson5: {
+            l5_q1: "4a", l5_q2: "6m", l5_q3: "n", l5_q4: "x+12", l5_q5: "3y+1",
+            l5_q6: "4", l5_q7: "1", l5_q8: "4", l5_q9: "12"
+        },
+        // Занятие 6
+        lesson6: {
+            l6_q1: "II", l6_q2: "6", l6_q3: "5", l6_q4: "16"
+        },
+        // Занятие 7
+        lesson7: {
+            l7_q1: "да", l7_q2: "нет", l7_q3: "6", l7_q4: "21", l7_q5: "3",
+            l7_q6: "50", l7_q7: "28", l7_q8: "300", l7_q9: "40"
+        }
     };
 
+    // текущее активное занятие (номер)
+    let currentLesson = "lesson1";
+
+    // Нормализация ответов
     function normalize(str) {
         let s = str.trim().replace(/\s+/g, ' ').replace(/,/g, ';');
-        // убираем лишние пробелы вокруг ;
-        s = s.replace(/;\s*/g, ';');
         if (s === "") return "";
-        // для чисел с плавающей точкой
         if (!isNaN(parseFloat(s)) && isFinite(s)) return parseFloat(s).toString();
         return s;
     }
 
-    function checkLesson() {
-        let total = 0;
-        let correctCount = 0;
+    // Проверка выбранного занятия
+    function checkCurrentLesson() {
+        const answersMap = lessonsAnswers[currentLesson];
+        let total = 0, correct = 0;
         let mistakes = [];
 
-        for (let [id, right] of Object.entries(answers)) {
-            let inputEl = document.getElementById(id);
+        for (let [id, right] of Object.entries(answersMap)) {
+            const inputEl = document.getElementById(id);
             if (!inputEl) continue;
             total++;
             let userVal = normalize(inputEl.value);
             let normRight = normalize(right);
-            let isOk = false;
+            let ok = false;
 
-            // специальная обработка для ответов с двумя значениями (5; -5)
+            // Для двух ответов через точку с запятой
             if (normRight.includes(';')) {
                 let partsRight = normRight.split(';').map(p => p.trim());
                 let partsUser = userVal.split(';').map(p => p.trim());
-                if (partsUser.length === 2 && partsRight.length === 2) {
+                if (partsUser.length === partsRight.length) {
                     let setRight = new Set(partsRight);
                     let setUser = new Set(partsUser);
-                    if (setRight.size === setUser.size && [...setRight].every(v => setUser.has(v))) isOk = true;
+                    if (setRight.size === setUser.size && [...setRight].every(v => setUser.has(v))) ok = true;
                 }
             }
             else if (!isNaN(parseFloat(userVal)) && !isNaN(parseFloat(normRight))) {
-                if (Math.abs(parseFloat(userVal) - parseFloat(normRight)) < 0.0001) isOk = true;
+                if (Math.abs(parseFloat(userVal) - parseFloat(normRight)) < 0.0001) ok = true;
             } else if (userVal === normRight) {
-                isOk = true;
+                ok = true;
             }
-            // для задания 4 (причина) – сравниваем по ключевым словам
-            else if (id === 'x4') {
-                if (userVal.toLowerCase().includes("отрицательн") || userVal.toLowerCase().includes("не может") || userVal === "модуль не может быть отрицательным") isOk = true;
+            // для поля с модулем отрицательным (текст)
+            else if (id === 'l1_x4' && (userVal.toLowerCase().includes("отрицательн") || userVal === "модуль не может быть отрицательным")) {
+                ok = true;
             }
 
-            if (isOk) correctCount++;
+            if (ok) correct++;
             else {
                 let questionText = "";
                 let parent = inputEl.closest('.question');
@@ -413,26 +625,22 @@
                 mistakes.push(`❌ ${questionText} → ваш ответ: ${inputEl.value || "(пусто)"} | Правильно: ${right}`);
             }
         }
-        let percent = Math.round((correctCount/total)*100);
-        let report = `📊 Результат: ${correctCount} из ${total} (${percent}%)\n\n`;
+        let percent = total ? Math.round((correct/total)*100) : 0;
+        let report = `📊 Результат: ${correct} из ${total} (${percent}%)\n\n`;
         if (mistakes.length === 0) report += "🎉 Отлично! Все задания выполнены верно!";
         else report += "⚠️ Ошибки:\n" + mistakes.join("\n");
-
         document.getElementById("resultArea").innerHTML = report.replace(/\n/g, "<br>");
         window.lastReport = report;
     }
 
     function copyReport() {
-        if (!window.lastReport) {
-            checkLesson();
-        }
-        navigator.clipboard.writeText(window.lastReport).then(() => {
-            alert("✅ Отчёт скопирован! Отправьте учителю.");
-        }).catch(() => alert("Скопируйте вручную"));
+        if (!window.lastReport) checkCurrentLesson();
+        navigator.clipboard.writeText(window.lastReport).then(() => alert("✅ Отчёт скопирован!")).catch(() => alert("Скопируйте вручную"));
     }
 
-    function resetFields() {
-        for (let id of Object.keys(answers)) {
+    function resetCurrentLesson() {
+        const answersMap = lessonsAnswers[currentLesson];
+        for (let id of Object.keys(answersMap)) {
             let inp = document.getElementById(id);
             if (inp) inp.value = "";
         }
@@ -440,9 +648,25 @@
         window.lastReport = "";
     }
 
-    document.getElementById("checkBtn").addEventListener("click", checkLesson);
+    // Переключение вкладок
+    const tabs = document.querySelectorAll('.tab-btn');
+    const lessons = document.querySelectorAll('.lesson');
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lessonNum = btn.getAttribute('data-lesson');
+            currentLesson = `lesson${lessonNum}`;
+            lessons.forEach(l => l.classList.remove('active'));
+            document.getElementById(currentLesson).classList.add('active');
+            tabs.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById("resultArea").innerHTML = "📌 Переключились на новое занятие. Выполните задания и проверьте.";
+            window.lastReport = "";
+        });
+    });
+
+    document.getElementById("checkBtn").addEventListener("click", checkCurrentLesson);
     document.getElementById("copyBtn").addEventListener("click", copyReport);
-    document.getElementById("resetBtn").addEventListener("click", resetFields);
+    document.getElementById("resetBtn").addEventListener("click", resetCurrentLesson);
 </script>
 </body>
 </html>
