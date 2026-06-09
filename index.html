@@ -3,386 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Математика | Самопроверка с отчётом</title>
+    <title>Занятие 1. Положительные и отрицательные числа. Модуль. Сравнение | Математика 6 класс</title>
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #eef2f7;
-            margin: 0;
-            padding: 20px;
+            background: #eef2fa;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            padding: 30px 20px;
+            color: #1e2f3e;
         }
-        .main {
+        .lesson-container {
             max-width: 1100px;
             margin: 0 auto;
             background: white;
             border-radius: 40px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            padding: 20px 25px;
+            padding: 30px 35px;
         }
-        /* вкладки */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 10px 15px 0 15px;
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: #0f2b3d;
+            border-left: 8px solid #3b82f6;
+            padding-left: 20px;
         }
-        .tab-btn {
-            background: transparent;
-            border: none;
+        .subtitle {
             font-size: 1rem;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 40px 40px 0 0;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #475569;
+            color: #4a627a;
+            margin-bottom: 30px;
+            padding-left: 28px;
         }
-        .tab-btn.active {
-            background: white;
-            color: #1e4663;
-            border-bottom: 3px solid #3b82f6;
+        .theory-block {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 18px 25px;
+            margin-bottom: 35px;
+            border-left: 6px solid #3b82f6;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
         }
-        .tab-btn:hover:not(.active) {
-            background: #e9eef3;
+        .theory-block h2 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            color: #1e4a76;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .lesson-content {
-            display: none;
-            padding: 20px 15px;
-            animation: fade 0.2s ease;
+        .theory-block h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px 0;
+            color: #2563eb;
         }
-        .lesson-content.active {
-            display: block;
+        .important {
+            background: #fef9e3;
+            border-left: 5px solid #eab308;
+            padding: 12px 20px;
+            border-radius: 20px;
+            margin: 15px 0;
+            font-weight: 500;
         }
-        @keyframes fade {
-            from { opacity: 0; transform: translateY(5px);}
-            to { opacity: 1; transform: translateY(0);}
+        .rule {
+            background: #e6f0ff;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 1.05rem;
+            margin: 10px 0;
+        }
+        .example {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 12px 18px;
+            margin: 12px 0;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+        .task-section {
+            background: #ffffff;
+            border-radius: 28px;
+            margin-top: 25px;
         }
         .task-card {
             background: #ffffff;
             border: 1px solid #e2edf7;
             border-radius: 28px;
-            padding: 18px 22px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            padding: 18px 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         .task-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            font-size: 1.15rem;
-            margin-bottom: 12px;
             color: #0c4e6e;
+            margin-bottom: 15px;
             display: flex;
-            align-items: baseline;
-            gap: 10px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
         }
-        .badge {
-            background: #e6f0ff;
-            font-size: 0.75rem;
-            padding: 4px 12px;
+        .task-title .badge {
+            background: #3b82f6;
+            color: white;
+            padding: 4px 14px;
             border-radius: 30px;
-            color: #2563eb;
+            font-size: 0.8rem;
         }
         .question {
-            margin: 12px 0 12px 16px;
-            padding-left: 8px;
-            border-left: 2px solid #cfe3ff;
+            margin: 14px 0 14px 18px;
+            padding-left: 12px;
+            border-left: 3px solid #b9d0f0;
         }
         input {
             font-size: 1rem;
-            padding: 8px 12px;
-            border-radius: 20px;
+            padding: 8px 14px;
+            border-radius: 30px;
             border: 1.5px solid #cbd5e1;
-            width: 160px;
-            max-width: 90%;
-            margin: 5px 0 5px 8px;
-            background: white;
+            width: 150px;
+            margin-left: 12px;
+            background: #fefefe;
         }
         input:focus {
             outline: none;
             border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
         }
         .button-group {
             display: flex;
+            gap: 18px;
             flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0 15px;
+            margin: 25px 0 20px;
             justify-content: center;
         }
         button {
             background: #1e4663;
-            color: white;
             border: none;
-            font-size: 0.95rem;
+            color: white;
             font-weight: 600;
-            padding: 10px 24px;
+            font-size: 0.95rem;
+            padding: 12px 28px;
             border-radius: 40px;
             cursor: pointer;
             transition: 0.1s;
         }
-        button:active { transform: scale(0.97); }
+        button:active {
+            transform: scale(0.97);
+        }
         .reset-btn {
             background: #4b5563;
         }
         .result-area {
             background: #f0f9ff;
-            border-radius: 24px;
-            padding: 18px;
+            border-radius: 28px;
+            padding: 20px;
             margin-top: 20px;
             font-family: monospace;
             font-size: 0.9rem;
             white-space: pre-wrap;
             border: 1px solid #bfdbfe;
         }
+        .homework {
+            background: #fef2e8;
+            border-left: 8px solid #f97316;
+            border-radius: 28px;
+            padding: 18px 25px;
+            margin-top: 35px;
+        }
+        .homework h3 {
+            font-size: 1.5rem;
+            color: #c2410c;
+        }
         footer {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #6c86a3;
-            padding: 15px 20px 0;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 15px;
+            margin-top: 30px;
         }
-        @media (max-width: 650px) {
-            .main { padding: 15px; }
-            .tabs { padding: 5px 10px 0; }
-            .tab-btn { padding: 6px 14px; font-size: 0.85rem; }
+        @media (max-width: 700px) {
+            .lesson-container { padding: 20px; }
             .question { margin-left: 5px; }
             input { width: 120px; }
         }
     </style>
 </head>
 <body>
-<div class="main">
-    <h2 style="margin-top:0; text-align:center;">📐 Математика 6–7 класс</h2>
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="lesson1">📘 Урок 1. Отрицательные числа, модуль, сложение/вычитание</button>
-        <button class="tab-btn" data-tab="lesson2">📗 Урок 2. Умножение, деление, уравнения</button>
+<div class="lesson-container">
+    <h1>🧮 Занятие 1</h1>
+    <div class="subtitle">Положительные и отрицательные числа · Модуль · Сравнение</div>
+
+    <!-- ТЕОРИЯ -->
+    <div class="theory-block">
+        <h2>📖 Теория</h2>
+
+        <h3>1. Координатная прямая</h3>
+        <p>Прямая, на которой выбраны:</p>
+        <ul style="margin-left: 30px; margin-bottom: 10px;">
+            <li><strong>начало отсчёта</strong> (точка O, число 0),</li>
+            <li><strong>положительное направление</strong> (обычно вправо или вверх),</li>
+            <li><strong>единичный отрезок</strong>,</li>
+        </ul>
+        <p>называется <strong>координатной прямой</strong>.<br>
+        Числа справа от нуля – <strong class="important">положительные</strong> (со знаком + или без знака).<br>
+        Числа слева от нуля – <strong>отрицательные</strong> (со знаком –).</p>
+
+        <div class="important">
+            🔹 Пример: +5, 7, 0.3 – положительные; –2, –0.7, –3/4 – отрицательные.
+        </div>
+
+        <h3>2. Противоположные числа</h3>
+        <p>Числа, отличающиеся только знаком, называются <strong>противоположными</strong>.<br>
+        Например: <strong>7 и –7</strong>. Ноль противоположен сам себе.<br>
+        На координатной прямой они расположены <strong>симметрично</strong> относительно нуля.</p>
+
+        <div class="rule">📌 Если число <em>a</em>, то противоположное ему <em>–a</em>.</div>
+
+        <h3>3. Модуль числа</h3>
+        <p><strong>Модуль</strong> числа <em>n</em> – это расстояние от начала отсчёта до точки <em>N(n)</em>.<br>
+        Обозначение: <strong>|n|</strong>. Модуль всегда <strong>неотрицателен</strong>.</p>
+        <div class="rule">
+            |n| = n, если n ≥ 0 &nbsp;&nbsp;|&nbsp;&nbsp; |n| = –n, если n < 0
+        </div>
+        <div class="example">
+            📐 |–7| = 7, &nbsp; |3,5| = 3,5, &nbsp; |0| = 0.
+        </div>
+        <p><strong>Свойство:</strong> модули противоположных чисел равны: |–a| = |a|.</p>
+
+        <h3>4. Сравнение чисел</h3>
+        <ul>
+            <li>Любое положительное число <strong>больше</strong> любого отрицательного.</li>
+            <li>Ноль больше отрицательного, но меньше положительного.</li>
+            <li>Из двух отрицательных чисел <strong>больше</strong> то, у которого <strong>модуль меньше</strong>.</li>
+            <li>На координатной прямой большее число находится <strong>правее</strong>.</li>
+        </ul>
+        <div class="important">
+            ✅ Пример: –5 < –3 (так как |–5|=5, |–3|=3, 5>3 → –5 < –3).<br>
+            ✅ 7 > –10, &nbsp; 0 > –2,5, &nbsp; –1,2 < –0,8.
+        </div>
     </div>
 
-    <!-- УРОК 1 -->
-    <div id="lesson1" class="lesson-content active">
-        <div class="task-card">
-            <div class="task-title"><span class="badge">1️⃣ Модуль и сравнение</span></div>
-            <div class="question">1. |–34| = <input type="text" id="l1q1" placeholder="число"></div>
-            <div class="question">2. |12.7| = <input type="text" id="l1q2" placeholder="число"></div>
-            <div class="question">3. |–0.08| = <input type="text" id="l1q3" placeholder="число"></div>
-            <div class="question">4. |–3/8| = <input type="text" id="l1q4" placeholder="3/8"></div>
-            <div class="question">5. –15 ___ –12 (введи > или <) <input type="text" id="l1q5" style="width:70px"></div>
-            <div class="question">6. –3.8 ___ 0 <input type="text" id="l1q6" style="width:70px"></div>
-            <div class="question">7. 7 ___ –9 <input type="text" id="l1q7" style="width:70px"></div>
-            <div class="question">8. –2.5 ___ –2.05 <input type="text" id="l1q8" style="width:70px"></div>
-            <div class="question">9. –2/3 ___ –3/4 <input type="text" id="l1q9" style="width:70px"></div>
-        </div>
-        <div class="task-card">
-            <div class="task-title"><span class="badge">➕ Сложение и вычитание</span></div>
-            <div class="question">10. (–15) + (–7) = <input type="text" id="l1q10"></div>
-            <div class="question">11. 23 + (–16) = <input type="text" id="l1q11"></div>
-            <div class="question">12. –4.2 + 7 = <input type="text" id="l1q12"></div>
-            <div class="question">13. 8 – (–3) = <input type="text" id="l1q13"></div>
-            <div class="question">14. –5 – (–7) = <input type="text" id="l1q14"></div>
-            <div class="question">15. –2.5 – 3.5 = <input type="text" id="l1q15"></div>
-            <div class="question">16. –34 + 28 + (–16) + 14 = <input type="text" id="l1q16"></div>
-        </div>
-        <div class="task-card">
-            <div class="task-title"><span class="badge">📐 Уравнения / длина</span></div>
-            <div class="question">17. x + (–7) = 12 → x = <input type="text" id="l1q17"></div>
-            <div class="question">18. Длина отрезка между M(–5) и N(3): <input type="text" id="l1q18"></div>
-        </div>
+    <!-- УСТНЫЕ УПРАЖНЕНИЯ (сами вопросы, ученик отвечает устно или в тетради) -->
+    <div class="task-card">
+        <div class="task-title"><span class="badge">🗣️ Устно</span> Разминка</div>
+        <div class="question">1. Назовите числа, противоположные: –5, 2.3, –0.5, 0, 7.</div>
+        <div class="question">2. Чему равен модуль: |–12|, |8|, |–0.7|, |0|?</div>
+        <div class="question">3. Сравните, не вычисляя: –3 и 2, 0 и –1, –7 и –5.</div>
+        <div class="question">4. Верно ли: |–9| = 9, |5| = –5, |–a| = a для любого a?</div>
     </div>
 
-    <!-- УРОК 2 -->
-    <div id="lesson2" class="lesson-content">
+    <!-- ПИСЬМЕННЫЕ ЗАДАНИЯ (с полями ввода) -->
+    <div class="task-section">
         <div class="task-card">
-            <div class="task-title"><span class="badge">✖️ Умножение и деление</span></div>
-            <div class="question">1. (–7)·9 = <input type="text" id="l2q1"></div>
-            <div class="question">2. (–5)·(–12) = <input type="text" id="l2q2"></div>
-            <div class="question">3. (–0.5)·(–0.2) = <input type="text" id="l2q3"></div>
-            <div class="question">4. 48 : (–6) = <input type="text" id="l2q4"></div>
-            <div class="question">5. (–120) : (–15) = <input type="text" id="l2q5"></div>
-            <div class="question">6. (–8.4) : 4 = <input type="text" id="l2q6"></div>
+            <div class="task-title"><span class="badge">📝 Задание 1</span> Координаты точек</div>
+            <div class="question">Запишите координаты точек A(3), B(–2), C(–4.5), D(0).<br> (в поля введите просто число, например 3)</div>
+            <div class="question">A(3) → x = <input type="text" id="z1" placeholder="3"> (уже готово)</div>
+            <div class="question">B(–2) → x = <input type="text" id="z2" placeholder="-2"></div>
+            <div class="question">C(–4.5) → x = <input type="text" id="z3" placeholder="-4.5"></div>
+            <div class="question">D(0) → x = <input type="text" id="z4" placeholder="0"></div>
         </div>
+
         <div class="task-card">
-            <div class="task-title"><span class="badge">🔢 Степень</span></div>
-            <div class="question">7. (–2)² = <input type="text" id="l2q7"></div>
-            <div class="question">8. (–3)³ = <input type="text" id="l2q8"></div>
-            <div class="question">9. (–0.5)² = <input type="text" id="l2q9"></div>
+            <div class="task-title"><span class="badge">📝 Задание 2</span> Модуль числа</div>
+            <div class="question">1. |–34| = <input type="text" id="m1" placeholder="число"></div>
+            <div class="question">2. |12.7| = <input type="text" id="m2" placeholder="число"></div>
+            <div class="question">3. |–0.08| = <input type="text" id="m3" placeholder="число"></div>
+            <div class="question">4. |–3/8| = <input type="text" id="m4" placeholder="3/8"></div>
+            <div class="question">5. |–105| = <input type="text" id="m5" placeholder="число"></div>
         </div>
+
         <div class="task-card">
-            <div class="task-title"><span class="badge">🧩 Линейные уравнения (7 класс)</span></div>
-            <div class="question">10. 5x – 8 = 2x + 7 → x = <input type="text" id="l2q10"></div>
-            <div class="question">11. 4(x – 3) = 2x + 6 → x = <input type="text" id="l2q11"></div>
-            <div class="question">12. –3x + 5 = 2x – 10 → x = <input type="text" id="l2q12"></div>
+            <div class="task-title"><span class="badge">📝 Задание 3</span> Сравнение (>, <, =)</div>
+            <div class="question">а) –15 ___ –12 → <input type="text" id="s1" style="width:70px" placeholder="знак"></div>
+            <div class="question">б) –3.8 ___ 0 → <input type="text" id="s2" style="width:70px" placeholder="знак"></div>
+            <div class="question">в) 7 ___ –9 → <input type="text" id="s3" style="width:70px" placeholder="знак"></div>
+            <div class="question">г) –2.5 ___ –2.05 → <input type="text" id="s4" style="width:70px" placeholder="знак"></div>
+            <div class="question">д) 0 ___ –0.01 → <input type="text" id="s5" style="width:70px" placeholder="знак"></div>
+            <div class="question">е) –2/3 ___ –3/4 → <input type="text" id="s6" style="width:70px" placeholder="знак"></div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-title"><span class="badge">📝 Задание 4</span> Вычисление модулей</div>
+            <div class="question">а) |–7| + |3| = <input type="text" id="c1" placeholder="число"></div>
+            <div class="question">б) |–5| – |–2| = <input type="text" id="c2" placeholder="число"></div>
+            <div class="question">в) |–1.5| + |–2.8| = <input type="text" id="c3" placeholder="число"></div>
+            <div class="question">г) |9| – |–4.3| = <input type="text" id="c4" placeholder="число"></div>
+            <div class="question">д) |–0.7| – |0.7| = <input type="text" id="c5" placeholder="число"></div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-title"><span class="badge">📝 Задание 5</span> Найти x из уравнения |x| = a</div>
+            <div class="question">а) |x| = 5 → x = <input type="text" id="x1" placeholder="например: 5; -5"></div>
+            <div class="question">б) |x| = 0 → x = <input type="text" id="x2" placeholder="число"></div>
+            <div class="question">в) |x| = 1.4 → x = <input type="text" id="x3" placeholder="два числа через ;"></div>
+            <div class="question">г) |x| = –3 → (почему нет решений?) <input type="text" id="x4" placeholder="напишите причину" style="width:250px"></div>
+        </div>
+
+        <div class="task-card">
+            <div class="task-title"><span class="badge">📝 Задание 6</span> Порядок возрастания</div>
+            <div class="question">а) –4, 0, –7, 2.5, –1, 3, –0.5 → запишите в порядке возрастания через пробел: <input type="text" id="order1" style="width:300px" placeholder="-7 -4 -1 -0.5 0 2.5 3"></div>
+            <div class="question">б) –3.2, –3.5, 0, 2.1, –1.8, –3.15 → <input type="text" id="order2" style="width:300px" placeholder="числа"></div>
+            <div class="question">в) –5/6, –0.8, –2/3, 0, –1 → <input type="text" id="order3" style="width:300px" placeholder="числа"></div>
         </div>
     </div>
 
     <div class="button-group">
-        <button id="checkBtn">✅ Проверить текущий урок</button>
-        <button id="copyReportBtn">📋 Скопировать отчёт (только ошибки)</button>
+        <button id="checkBtn">✅ Проверить задания</button>
+        <button id="copyBtn">📋 Скопировать отчёт (только ошибки)</button>
         <button id="resetBtn" class="reset-btn">🔄 Очистить поля</button>
     </div>
 
     <div id="resultArea" class="result-area">
-        📌 Выберите урок, выполните задания и нажмите «Проверить».<br>
-        Затем скопируйте отчёт (только неправильные ответы) и отправьте учителю.
+        📌 После выполнения нажмите «Проверить».<br>
+        Отчёт покажет только ошибки и правильные ответы.
     </div>
-    <footer>
-        ⚡ Дроби вводите через / (например 3/8). Десятичные через точку.<br>
-        Знаки сравнения: > или < (латиницей).
-    </footer>
+
+    <div class="homework">
+        <h3>🏠 Домашнее задание</h3>
+        <p><strong>1.</strong> Начертите координатную прямую, отметьте точки: A(–4), B(2.5), C(–1.5), D(0), E(6). Найдите расстояние от начала отсчёта до каждой точки.</p>
+        <p><strong>2.</strong> Запишите все целые числа, модуль которых меньше 5.</p>
+        <p><strong>3.</strong> Сравните:<br>
+        а) –17 и –19 &nbsp;&nbsp; б) –0.3 и –0.27 &nbsp;&nbsp; в) –7/8 и –5/6.</p>
+        <p><strong>4.</strong> Вычислите: а) |–28| + |–14|; б) |–6.8| – |4.2|; в) |–0.5|·|–8|; г) |120| : |–40|.</p>
+        <p><strong>5.*</strong> Придумайте три числа, каждое из которых больше –5, но меньше –2.</p>
+    </div>
+    <footer>✏️ Вводите ответы прямо в поля. Дроби записывайте через / (например 3/8). Для двух ответов в задании 5а используйте формат: 5; -5</footer>
 </div>
 
 <script>
-    // ----- ПРАВИЛЬНЫЕ ОТВЕТЫ ДЛЯ КАЖДОГО УРОКА -----
+    // Правильные ответы (для проверки)
     const answers = {
-        lesson1: {
-            l1q1: "34", l1q2: "12.7", l1q3: "0.08", l1q4: "3/8",
-            l1q5: "<", l1q6: "<", l1q7: ">", l1q8: "<", l1q9: ">",
-            l1q10: "-22", l1q11: "7", l1q12: "2.8", l1q13: "11", l1q14: "2", l1q15: "-6", l1q16: "-8",
-            l1q17: "19", l1q18: "8"
-        },
-        lesson2: {
-            l2q1: "-63", l2q2: "60", l2q3: "0.1", l2q4: "-8", l2q5: "8", l2q6: "-2.1",
-            l2q7: "4", l2q8: "-27", l2q9: "0.25",
-            l2q10: "5", l2q11: "9", l2q12: "3"
-        }
+        // Задание 1 (координаты точек) – просто для единообразия, но они очевидны
+        z1: "3", z2: "-2", z3: "-4.5", z4: "0",
+        m1: "34", m2: "12.7", m3: "0.08", m4: "3/8", m5: "105",
+        s1: "<", s2: "<", s3: ">", s4: "<", s5: ">", s6: ">",
+        c1: "10", c2: "3", c3: "4.3", c4: "4.7", c5: "0",
+        x1: "5; -5",   // допускается 5;-5 или 5, -5
+        x2: "0",
+        x3: "1.4; -1.4",
+        x4: "модуль не может быть отрицательным",
+        order1: "-7 -4 -1 -0.5 0 2.5 3",
+        order2: "-3.5 -3.2 -3.15 -1.8 0 2.1",
+        order3: "-1 -0.8 -5/6 -2/3 0"
     };
 
-    let currentLesson = "lesson1"; // lesson1 или lesson2
-
-    // Нормализация ответа (сравнение чисел и строк)
-    function normalizeAnswer(val) {
-        let s = val.trim().replace(/\s/g, '');
+    function normalize(str) {
+        let s = str.trim().replace(/\s+/g, ' ').replace(/,/g, ';');
+        // убираем лишние пробелы вокруг ;
+        s = s.replace(/;\s*/g, ';');
         if (s === "") return "";
-        // число с плавающей точкой
-        if (!isNaN(parseFloat(s)) && isFinite(s)) {
-            let num = parseFloat(s);
-            // убираем лишние нули, но сохраняем 0.1, 2.8 и т.д.
-            return num.toString();
-        }
+        // для чисел с плавающей точкой
+        if (!isNaN(parseFloat(s)) && isFinite(s)) return parseFloat(s).toString();
         return s;
     }
 
-    // Проверка текущего урока, возвращает объект { allCorrectCount, total, mistakesList }
-    function checkCurrentLesson() {
-        const correctMap = answers[currentLesson];
-        let total = Object.keys(correctMap).length;
+    function checkLesson() {
+        let total = 0;
         let correctCount = 0;
-        let mistakes = []; // массив строк с описанием ошибок
+        let mistakes = [];
 
-        for (let [id, rightAnswer] of Object.entries(correctMap)) {
-            const inputEl = document.getElementById(id);
+        for (let [id, right] of Object.entries(answers)) {
+            let inputEl = document.getElementById(id);
             if (!inputEl) continue;
-            let userVal = normalizeAnswer(inputEl.value);
-            let normRight = normalizeAnswer(rightAnswer);
+            total++;
+            let userVal = normalize(inputEl.value);
+            let normRight = normalize(right);
             let isOk = false;
-            // Числовое сравнение с допуском
-            if (!isNaN(parseFloat(userVal)) && !isNaN(parseFloat(normRight))) {
+
+            // специальная обработка для ответов с двумя значениями (5; -5)
+            if (normRight.includes(';')) {
+                let partsRight = normRight.split(';').map(p => p.trim());
+                let partsUser = userVal.split(';').map(p => p.trim());
+                if (partsUser.length === 2 && partsRight.length === 2) {
+                    let setRight = new Set(partsRight);
+                    let setUser = new Set(partsUser);
+                    if (setRight.size === setUser.size && [...setRight].every(v => setUser.has(v))) isOk = true;
+                }
+            }
+            else if (!isNaN(parseFloat(userVal)) && !isNaN(parseFloat(normRight))) {
                 if (Math.abs(parseFloat(userVal) - parseFloat(normRight)) < 0.0001) isOk = true;
             } else if (userVal === normRight) {
                 isOk = true;
             }
-            if (isOk) {
-                correctCount++;
-            } else {
-                // собираем читаемое описание
+            // для задания 4 (причина) – сравниваем по ключевым словам
+            else if (id === 'x4') {
+                if (userVal.toLowerCase().includes("отрицательн") || userVal.toLowerCase().includes("не может") || userVal === "модуль не может быть отрицательным") isOk = true;
+            }
+
+            if (isOk) correctCount++;
+            else {
                 let questionText = "";
-                // пытаемся найти текст вопроса из label или из DOM
-                const parentDiv = inputEl.closest('.question');
-                if (parentDiv) {
-                    let rawText = parentDiv.innerText.trim();
-                    // убираем лишние символы
-                    questionText = rawText.replace(inputEl.value, '___').replace(/\s+/g, ' ').trim();
-                } else {
-                    questionText = id;
-                }
-                mistakes.push(`❌ ${questionText} → ваш ответ: ${inputEl.value || "(пусто)"} | Правильно: ${rightAnswer}`);
+                let parent = inputEl.closest('.question');
+                if (parent) questionText = parent.innerText.split('→')[0].trim();
+                else questionText = id;
+                mistakes.push(`❌ ${questionText} → ваш ответ: ${inputEl.value || "(пусто)"} | Правильно: ${right}`);
             }
         }
-        return { correctCount, total, mistakes };
+        let percent = Math.round((correctCount/total)*100);
+        let report = `📊 Результат: ${correctCount} из ${total} (${percent}%)\n\n`;
+        if (mistakes.length === 0) report += "🎉 Отлично! Все задания выполнены верно!";
+        else report += "⚠️ Ошибки:\n" + mistakes.join("\n");
+
+        document.getElementById("resultArea").innerHTML = report.replace(/\n/g, "<br>");
+        window.lastReport = report;
     }
 
-    // Отображение результата в области resultArea
-    function showReport() {
-        const { correctCount, total, mistakes } = checkCurrentLesson();
-        const percent = Math.round((correctCount / total) * 100);
-        const summary = `📊 Результат: ${correctCount} из ${total} (${percent}%)\n\n`;
-        let mistakesText = "";
-        if (mistakes.length === 0) {
-            mistakesText = "🎉 Всё верно! Молодец!";
-        } else {
-            mistakesText = "⚠️ Ошибки (только неправильные задания):\n" + mistakes.join("\n");
-        }
-        const fullReport = summary + mistakesText;
-        // в области результата показываем с html-переносами
-        document.getElementById("resultArea").innerHTML = `<strong>${summary.replace(/\n/g,'<br>')}</strong><br>${mistakesText.replace(/\n/g,'<br>')}<br><br>📌 Нажмите «Скопировать отчёт» и отправьте учителю.`;
-        // сохраняем чистый текст для копирования (без html)
-        window.lastReportText = summary + mistakesText;
-    }
-
-    // Копирование только отчёта (текст)
     function copyReport() {
-        if (!window.lastReportText) {
-            // если не проверяли, проверим сейчас
-            const { correctCount, total, mistakes } = checkCurrentLesson();
-            const percent = Math.round((correctCount / total) * 100);
-            let mistakesText = "";
-            if (mistakes.length === 0) mistakesText = "🎉 Всё верно! Молодец!";
-            else mistakesText = "⚠️ Ошибки:\n" + mistakes.join("\n");
-            window.lastReportText = `📊 Результат: ${correctCount} из ${total} (${percent}%)\n\n${mistakesText}`;
+        if (!window.lastReport) {
+            checkLesson();
         }
-        navigator.clipboard.writeText(window.lastReportText).then(() => {
-            alert("✅ Отчёт скопирован! Отправьте его учителю.");
-        }).catch(() => {
-            alert("❌ Не удалось скопировать, скопируйте вручную.");
-        });
+        navigator.clipboard.writeText(window.lastReport).then(() => {
+            alert("✅ Отчёт скопирован! Отправьте учителю.");
+        }).catch(() => alert("Скопируйте вручную"));
     }
 
-    // Сброс всех полей в текущем уроке
-    function resetLesson() {
-        const correctMap = answers[currentLesson];
-        for (let id of Object.keys(correctMap)) {
-            const inp = document.getElementById(id);
+    function resetFields() {
+        for (let id of Object.keys(answers)) {
+            let inp = document.getElementById(id);
             if (inp) inp.value = "";
         }
         document.getElementById("resultArea").innerHTML = "🧹 Поля очищены. Нажмите «Проверить».";
-        window.lastReportText = "";
+        window.lastReport = "";
     }
 
-    // Переключение между уроками (вкладки)
-    function switchLesson(lessonId) {
-        currentLesson = lessonId;
-        // показать нужный блок
-        document.querySelectorAll('.lesson-content').forEach(block => block.classList.remove('active'));
-        document.getElementById(lessonId).classList.add('active');
-        // обновить активную кнопку вкладки
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            if (btn.getAttribute('data-tab') === lessonId) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-        // сбросить результат (чтобы не путать)
-        document.getElementById("resultArea").innerHTML = "📌 Вы переключили урок. Выполните задания и проверьте.";
-        window.lastReportText = "";
-    }
-
-    // Привязка событий
-    document.getElementById("checkBtn").addEventListener("click", showReport);
-    document.getElementById("copyReportBtn").addEventListener("click", copyReport);
-    document.getElementById("resetBtn").addEventListener("click", resetLesson);
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const tabId = btn.getAttribute("data-tab");
-            if (tabId) switchLesson(tabId);
-        });
-    });
-
-    // Инициализация (первый урок уже активен)
-    window.lastReportText = "";
+    document.getElementById("checkBtn").addEventListener("click", checkLesson);
+    document.getElementById("copyBtn").addEventListener("click", copyReport);
+    document.getElementById("resetBtn").addEventListener("click", resetFields);
 </script>
 </body>
 </html>
